@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closures</title>
+</head>
+<body>
+    <button id="button1">Orange</button>
+    <button id="button2">Red</button>
+    <script>
+        // If we dot return a function from a function, it will not be a closure
+        // And it will always have the background color of red
+        function handleClick(color){
+           // document.body.style.backgroundColor = color;
+
+           return function(){
+               document.body.style.backgroundColor = color;
+           }
+        }
+        //Without call it can also be called but just used to remember that call also exists to call the function
+        document.getElementById('button1').onclick = handleClick.call(this, "orange");
+        document.getElementById('button2').onclick = handleClick("red");
+    </script>
+</body>
+</html>
